@@ -1,12 +1,11 @@
-//prompt w/password criteria
-  //length 8-128 characters
+//prompts w/password criteria
+  //length 8-128 characters, prompt
   //character types (lowercase, uppercase, numeric, and/or special characters)
-
+    //confirm()
+  
 console.log("Here we go!");
-
-//OBJECTS ARE YOUR FRIEND
-
-var numChar = prompt("Number of Characters?"); //input from user number of characters
+// password length prompt
+// var passLength = prompt("Choose a number between 8-128");
 
 
 
@@ -14,7 +13,20 @@ var numChar = prompt("Number of Characters?"); //input from user number of chara
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
+
+
 function writePassword() {
+  // password length prompt
+var passLength = prompt("Choose a number between 8-128");
+  if(passLength < 8){
+    alert("Password must be at least 8 characters");
+  } else if(passLength > 128) {
+    alert("Password must be no more than 128 character");
+  } 
+
+  //character type confirms
+  
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
