@@ -29,6 +29,7 @@ var generateBtn = document.querySelector("#generate");
 
 function writePassword() {
   alert("Let's make a password!")
+
   // password length prompt
 var lengthInput = prompt("Choose a number between 8-128");//get number between 8-128
   lengthInput = lengthInput.toUpperCase();//changes input string to all uppercase
@@ -36,8 +37,8 @@ var lengthInput = prompt("Choose a number between 8-128");//get number between 8
     alert("Password must be at least 8 characters");
   } else if(lengthInput > 128) {
     alert("Password must be no more than 128 character");
-
   } 
+
   //character type confirms
 var includeLow = prompt("Would you like to include lowercase? Type yes or no.") ;
   includeLow = includeLow.toUpperCase();
@@ -64,8 +65,10 @@ var includeSpecial = prompt("Would you like to include special characters? Type 
     console.log(selectedChar)
   }
   
-  //now what? 
-  var password = generatePassword();
+  //now what? LOL so random
+
+
+  //var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
 //   } else {
