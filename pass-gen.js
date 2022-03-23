@@ -1,3 +1,4 @@
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -5,9 +6,16 @@ console.log("Thaaaaaanks, I hate it")
 //character arrays for randomization LOL
 var lowChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 var upChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-var numChar = [1,1,2,3,4,5,6,7,8,9,0]
+var numChar = [1,2,3,4,5,6,7,8,9]
 var specChar = [" ","!","#","$","%","&","'","(",")","*",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"]
 var selectedChar = []
+
+var lowerConfirm
+var upperConfirm
+var numConfirm
+var specialConfirm
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -21,12 +29,21 @@ var lengthInput = prompt("Choose a number between 8 and 128");
  var lengthNum = parseInt(lengthInput) //converts string into number
 console.log(lengthNum) 
 if(lengthInput < 8) {
-    alert("Password must be 8 characters or more");
-} else if(lengthInput >128) {
+    alert("Password must be between 8 - 128 characters");
+ } else if(lengthInput > 128) {
     alert("Password must be 128 characters or less");
+    //shortening prompts listed below (TRYING TO)
+} else {  
+    lowerConfirm = confirm("Include lowercase?")
+    upperConfirm = confirm("Include uppercase?")
+    numConfirm = confirm("Include numbers?")
+    specialConfirm = confirm("Include special characters?")
 }
-
-//character type confirm(s)
+//if all are negs
+if(!lowerConfirm && !upperConfirm && !numConfirm && !specialConfirm) {
+    alert("Password must have at least one parameter!")
+} //else if()
+//character type prompt(s)
 var includeLow = prompt("Would you like to include lowercase? Type yes or no."); 
   includeLow = includeLow.toUpperCase();
   if(includeLow === "YES") {
@@ -49,10 +66,13 @@ var includeSpecial = prompt("Would you like to include special characters? Type 
   includeSpecial = includeSpecial.toUpperCase();
   if(includeSpecial === "YES") {
     selectedChar.push(...specChar)
-    console.log(selectedChar)
+    //console.log(selectedChar)
   }
 
-//make password
+//randomize selected characters
+var randomIndex = Math.floor(Math.random() * (lengthNum - 0) + 0);
+var randomPass = selectedChar[randomIndex];
+console.log(randomPass);
 
 
 
