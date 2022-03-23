@@ -1,8 +1,23 @@
 //prompts w/password criteria
-  //length 8-128 characters, prompt
-  //character types (lowercase, uppercase, numeric, and/or special characters)
-    //confirm()
+//declare variables
+  //var lengthInput, prompt, string
+  //var lowerChar, confirm, boolean
+  //var upperChar, confirm, boolean
+  //var numChar, confirm, boolean
+  //var specialChar, confirm, boolean
   
+//arrays for character types (lowercase, uppercase, numeric, and special characters)
+//create function generatePassword()
+//create random function, Math.floor(Math.random())
+
+//use conditionals
+  //lif(lengthInput < 8) {alert("NOPE")}
+  //if(!lowerConfirm && the rest....) {alert("NEED SOMETHING")}
+
+//create empty array for final password choices
+//join selected arrays
+//must have at least one character from each array
+//array.join(array1)
 console.log("Here we go!");
 
 // Character arrays for randomization

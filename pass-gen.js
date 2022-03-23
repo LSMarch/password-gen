@@ -1,37 +1,51 @@
 
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+//prompts w/password criteria
+//declare variables
+  //var lengthInput, prompt, string
+  //var lowerChar, confirm, boolean
+  //var upperChar, confirm, boolean
+  //var numChar, confirm, boolean
+  //var specialChar, confirm, boolean
+  
+//arrays for character types (lowercase, uppercase, numeric, and special characters)
+//create function generatePassword()
+//create random function, Math.floor(Math.random())
+
+//use conditionals
+  //lif(lengthInput < 8) {alert("NOPE")}
+  //if(!lowerConfirm && the rest....) {alert("NEED SOMETHING")}
+
+//create empty array for final password choices
+//join selected arrays
+//must have at least one character from each array
+//array.join(array1)
 
 console.log("Thaaaaaanks, I hate it")
 //character arrays for randomization LOL
 var lowChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-var upChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-var numChar = [1,2,3,4,5,6,7,8,9]
+//can run lowChar array through .toUpperCase??
+var numChar = [0,1,2,3,4,5,6,7,8,9]
+var upperChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var specChar = [" ","!","#","$","%","&","'","(",")","*",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"]
-var selectedChar = []
+var selectedChar
 
-var lowerConfirm
-var upperConfirm
-var numConfirm
-var specialConfirm
+var lowerConfirm //boolean
+var upperConfirm //boolean
+var numConfirm //boolean
+var specialConfirm //boolean
+var lengthInput //string, parseInt()
 
-
-
-// Write password to the #password input
-function writePassword() {
-  //var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
 //password length prompt
-var lengthInput = prompt("Choose a number between 8 and 128"); 
+lengthInput = prompt("Choose a number between 8 and 128"); 
  //console.log(lengthInput)
  var lengthNum = parseInt(lengthInput) //converts string into number
 console.log(lengthNum) 
-if(lengthInput < 8) {
+if(lengthInput < 8 || lengthInput > 128) { 
     alert("Password must be between 8 - 128 characters");
+    //return null
  } else if(lengthInput > 128) {
     alert("Password must be 128 characters or less");
+    //return null
     //shortening prompts listed below (TRYING TO)
 } else {  
     lowerConfirm = confirm("Include lowercase?")
@@ -39,45 +53,84 @@ if(lengthInput < 8) {
     numConfirm = confirm("Include numbers?")
     specialConfirm = confirm("Include special characters?")
 }
+
 //if all are negs
 if(!lowerConfirm && !upperConfirm && !numConfirm && !specialConfirm) {
-    alert("Password must have at least one parameter!")
-} //else if()
-//character type prompt(s)
-var includeLow = prompt("Would you like to include lowercase? Type yes or no."); 
-  includeLow = includeLow.toUpperCase();
-  if(includeLow === "YES") {
-    selectedChar.push(...lowChar) //push lowChar into empty selectedChar
-    //console.log(selectedChar);
-  }
-var includeUpper = prompt("Would you like to include uppercase? Type yes or no");
-  includeUpper = includeUpper.toUpperCase();
-  if(includeUpper === "YES") {
-    selectedChar.push(...upChar);
-    //console.log(selectedChar);
-  }
-var includeNum = prompt("Would you like to include numbers? Type yes or no");
-  includeNum=includeNum.toUpperCase();
-  if(includeNum === "YES") {
-    selectedChar.push(...numChar);
-    //console.log(selectedChar)
-  }
-var includeSpecial = prompt("Would you like to include special characters? Type yes or no");
-  includeSpecial = includeSpecial.toUpperCase();
-  if(includeSpecial === "YES") {
-    selectedChar.push(...specChar)
-    //console.log(selectedChar)
-  }
+  alert("Password must have at least one parameter!")
+} 
+
+//if all confirmed
+if(lowerConfirm && upperConfirm && numConfirm && specialConfirm) {
+  selectedChar = lowChar.concat(upperChar, numChar, specChar)
+  console.log(selectedChar)  
+} 
+
+//if 3 confirmed
+if(lowerConfirm && numConfirm && specialConfirm) {
+  selectedChar = lowChar.concat(numChar, specChar)
+  //console.log(selectedChar)
+} else if(lowerConfirm && upperConfirm && specialConfirm) {
+  selectedChar = lowChar.concat(upperChar, specChar)
+  //console.log(selectedChar)
+} else if(lowerConfirm && upperConfirm && numConfirm) {
+  selectedChar = lowChar.concat(upperChar, numChar)
+  //console.log(selectedChar)
+} else if(upperConfirm && numConfirm && specialConfirm) {
+  selectedChar = upperChar.concat(numChar, specChar)
+   //console.log(selectedChar)
+}
+
+//if 2 confirmed
+if (lowerConfirm && upperConfirm) {
+  selectedChar = lowChar.concat(upperChar)
+} else if (lowerConfirm && numConfirm){
+  selectedChar = lowChar.concat(numChar)
+} else if (lowerConfirm && specialConfirm) {
+  selectedChar = lowChar.concat(specChar)
+} else if (upperConfirm && numConfirm) {
+  selectedChar = upperChar.concat(numChar)
+} else if (upperConfirm && specialConfirm) {
+  selectedChar = upperChar.concat(specChar)  
+} else if(numConfirm && specialConfirm) {
+  selectedChar = numChar.concat(specChar)
+}
+
+//if 1 confirmed
+if (lowerConfirm) {
+  selectedChar = lowChar
+} else if (upperConfirm) {
+  selectedChar = upperChar
+} else if (numConfirm) {
+  selectedChar = numChar
+} else if (specialConfirm) {
+  selectedChar = specChar
+}
+
+
 
 //randomize selected characters
-var randomIndex = Math.floor(Math.random() * (lengthNum - 0) + 0);
-var randomPass = selectedChar[randomIndex];
-console.log(randomPass);
+for(var i = 0; i < lengthNum; i++) {
+  
+}
+
+// var randomIndex = Math.floor(Math.random() * (lengthNum - 0) + 0);
+// var randomPass = selectedChar[randomIndex];
 
 
 
+  //==============================================================================================
 
-}//this is writePasswor() bracket
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() { //displays on page for user
+  var password = generatePassword(); //all code will go in here
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//generateBtn.addEventListener("click", writePassword) 
