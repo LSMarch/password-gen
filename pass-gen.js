@@ -106,15 +106,23 @@ if (lowerConfirm) {
   selectedChar = specChar
 }
 
+//created empty array to hold choices to make an array
+var dasPassword = []
+
 
 
 //randomize selected characters
 for(var i = 0; i < lengthNum; i++) {
-  
+  //choices will hold the number of randomly selected characters user has chosen
+  //var choices are not an array?
+   var choices = selectedChar[Math.floor(Math.random() * selectedChar.length)]
+   console.log(choices)  
+   dasPassword.push(choices)
 }
 
-// var randomIndex = Math.floor(Math.random() * (lengthNum - 0) + 0);
-// var randomPass = selectedChar[randomIndex];
+
+//console.log(dasPassword)
+
 
 
 
@@ -125,7 +133,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() { //displays on page for user
-  var password = generatePassword(); //all code will go in here
+  var password = generatePassword() ; //all code will go in here
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
