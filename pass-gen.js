@@ -35,6 +35,8 @@ var numConfirm //boolean
 var specialConfirm //boolean
 var lengthInput //string, parseInt()
 
+
+function generatePassword () {
 //password length prompt
 lengthInput = prompt("Choose a number between 8 and 128"); 
  //console.log(lengthInput)
@@ -55,18 +57,19 @@ if(lengthInput < 8 || lengthInput > 128) {
 }
 
 //if all are negs
+
 if(!lowerConfirm && !upperConfirm && !numConfirm && !specialConfirm) {
   alert("Password must have at least one parameter!")
 } 
-
 //if all confirmed
-if(lowerConfirm && upperConfirm && numConfirm && specialConfirm) {
-  selectedChar = lowChar.concat(upperChar, numChar, specChar)
-  console.log(selectedChar)  
-} 
 
+else if(lowerConfirm && upperConfirm && numConfirm && specialConfirm) {
+  selectedChar = lowChar.concat(upperChar, numChar, specChar)
+  //console.log(selectedChar)  
+} 
 //if 3 confirmed
-if(lowerConfirm && numConfirm && specialConfirm) {
+
+else if(lowerConfirm && numConfirm && specialConfirm) {
   selectedChar = lowChar.concat(numChar, specChar)
   //console.log(selectedChar)
 } else if(lowerConfirm && upperConfirm && specialConfirm) {
@@ -79,9 +82,9 @@ if(lowerConfirm && numConfirm && specialConfirm) {
   selectedChar = upperChar.concat(numChar, specChar)
    //console.log(selectedChar)
 }
-
 //if 2 confirmed
-if (lowerConfirm && upperConfirm) {
+
+else if (lowerConfirm && upperConfirm) {
   selectedChar = lowChar.concat(upperChar)
 } else if (lowerConfirm && numConfirm){
   selectedChar = lowChar.concat(numChar)
@@ -94,9 +97,9 @@ if (lowerConfirm && upperConfirm) {
 } else if(numConfirm && specialConfirm) {
   selectedChar = numChar.concat(specChar)
 }
-
 //if 1 confirmed
-if (lowerConfirm) {
+
+else if (lowerConfirm) {
   selectedChar = lowChar
 } else if (upperConfirm) {
   selectedChar = upperChar
@@ -115,16 +118,17 @@ var dasPassword = []
 for(var i = 0; i < lengthNum; i++) {
   //choices will hold the number of randomly selected characters user has chosen
   //var choices are not an array?
-   var choices = selectedChar[Math.floor(Math.random() * selectedChar.length)]
-   console.log(choices)  
+   var choices = selectedChar[Math.floor(Math.random() * (selectedChar.length - 0) + 0)]
+   //console.log(choices)  
    dasPassword.push(choices)
 }
 
+//new variable to change array to string
+var pw = dasPassword.join("")
 
-//console.log(dasPassword)
-
-
-
+console.log(pw)
+return pw
+}
 
   //==============================================================================================
 
@@ -141,4 +145,4 @@ function writePassword() { //displays on page for user
 }
 
 // Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword) 
+generateBtn.addEventListener("click", writePassword) 
