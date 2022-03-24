@@ -1,27 +1,5 @@
 
-//prompts w/password criteria
-//declare variables
-  //var lengthInput, prompt, string
-  //var lowerChar, confirm, boolean
-  //var upperChar, confirm, boolean
-  //var numChar, confirm, boolean
-  //var specialChar, confirm, boolean
-  
-//arrays for character types (lowercase, uppercase, numeric, and special characters)
-//create function generatePassword()
-//create random function, Math.floor(Math.random())
-
-//use conditionals
-  //lif(lengthInput < 8) {alert("NOPE")}
-  //if(!lowerConfirm && the rest....) {alert("NEED SOMETHING")}
-
-//create empty array for final password choices
-//join selected arrays
-//must have at least one character from each array
-//array.join(array1)
-
-console.log("Thaaaaaanks, I hate it")
-//character arrays for randomization LOL
+//character arrays
 var lowChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 //can run lowChar array through .toUpperCase??
 var numChar = [0,1,2,3,4,5,6,7,8,9]
@@ -29,26 +7,24 @@ var upperChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"
 var specChar = [" ","!","#","$","%","&","'","(",")","*",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"]
 var selectedChar
 
+//for confrim pop-ups
 var lowerConfirm //boolean
 var upperConfirm //boolean
 var numConfirm //boolean
 var specialConfirm //boolean
-var lengthInput //string, parseInt()
+var lengthInput //string, parseInt() to make integer
 
 
 function generatePassword () {
 //password length prompt
-lengthInput = prompt("Choose a number between 8 and 128"); 
- //console.log(lengthInput)
- var lengthNum = parseInt(lengthInput) //converts string into number
+lengthInput = prompt("Choose a number between 8 and 128");  
+ var lengthNum = parseInt(lengthInput) 
 console.log(lengthNum) 
 if(lengthInput < 8 || lengthInput > 128) { 
-    alert("Password must be between 8 - 128 characters");
-    //return null
+    alert("Password must be between 8 - 128 characters");    
  } else if(lengthInput > 128) {
     alert("Password must be 128 characters or less");
-    //return null
-    //shortening prompts listed below (TRYING TO)
+    return null    
 } else {  
     lowerConfirm = confirm("Include lowercase?")
     upperConfirm = confirm("Include uppercase?")
@@ -60,6 +36,7 @@ if(lengthInput < 8 || lengthInput > 128) {
 
 if(!lowerConfirm && !upperConfirm && !numConfirm && !specialConfirm) {
   alert("Password must have at least one parameter!")
+  return null
 } 
 //if all confirmed
 
@@ -107,19 +84,17 @@ else if (lowerConfirm) {
   selectedChar = numChar
 } else if (specialConfirm) {
   selectedChar = specChar
+} else {
+   return null
 }
 
-//created empty array to hold choices to make an array
+//created var to hold choices to make an array
 var dasPassword = []
-
-
 
 //randomize selected characters
 for(var i = 0; i < lengthNum; i++) {
-  //choices will hold the number of randomly selected characters user has chosen
-  //var choices are not an array?
-   var choices = selectedChar[Math.floor(Math.random() * (selectedChar.length - 0) + 0)]
-   //console.log(choices)  
+  //choices will hold the number of randomly selected characters user has chosen  
+   var choices = selectedChar[Math.floor(Math.random() * (selectedChar.length - 0) + 0)]     
    dasPassword.push(choices)
 }
 
@@ -130,14 +105,11 @@ console.log(pw)
 return pw
 }
 
-  //==============================================================================================
-
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() { //displays on page for user
-  var password = generatePassword() ; //all code will go in here
+  var password = generatePassword() ; 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
