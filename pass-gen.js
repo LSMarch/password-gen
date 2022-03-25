@@ -22,8 +22,6 @@ lengthInput = prompt("Choose a number between 8 and 128");
 console.log(lengthNum) 
 if(lengthInput < 8 || lengthInput > 128) { 
     alert("Password must be between 8 - 128 characters");    
- } else if(lengthInput > 128) {
-    alert("Password must be 128 characters or less");
     return null    
 } else {  
     lowerConfirm = confirm("Include lowercase?")
@@ -101,9 +99,9 @@ for(var i = 0; i < lengthNum; i++) {
 //new variable to change array to string
 var pw = dasPassword.join("")
 
-console.log(pw)
+//console.log(pw)
 return pw
-}
+} //generatePassword end
 
 var generateBtn = document.querySelector("#generate");
 
